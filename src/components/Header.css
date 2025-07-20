@@ -1,0 +1,76 @@
+.header {
+  background: #121212;
+  padding: 16px 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo-icon {
+  color: #00ff9d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-icon svg {
+  width: 28px;
+  height: 28px;
+  stroke-width: 1.5;
+}
+
+.logo h1 {
+  color: #ffffff;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.header-actions {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.notification-btn,
+.profile-btn {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.notification-btn svg,
+.profile-btn svg {
+  width: 24px;
+  height: 24px;
+  stroke: #ffffff;
+  stroke-width: 1.5;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.notification-btn:hover svg,
+.profile-btn:hover svg {
+  opacity: 1;
+} 

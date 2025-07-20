@@ -1,0 +1,44 @@
+{
+  "manifest_version": 3,
+  "name": "ExePay - Digital Payment Extension",
+  "version": "1.0.0",
+  "description": "Secure digital payment extension with QR scanning, wallet functionality, and user authentication",
+  "permissions": [
+    "activeTab",
+    "storage",
+    "tabs",
+    "notifications",
+    "contextMenus",
+    "alarms"
+  ],
+  "host_permissions": [
+    "http://localhost:3001/*",
+    "https://api.exepay.com/*"
+  ],
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["icons/*"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+} 
