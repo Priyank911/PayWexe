@@ -89,86 +89,152 @@ const Dashboard = ({ user, onLogout }) => {
             transition={{ duration: 0.3 }}
             className="home-view"
           >
-            {/* Balance Card */}
-            <div className="balance-card">
-              <div className="balance-header">
-                <h2>Current Balance</h2>
-                <button
-                  className="profile-btn"
-                  onClick={() => setActiveView('profile')}
-                >
-                  <img
-                    src={`https://ui-avatars.com/api/?name=${user?.name}&background=667eea&color=fff&size=32`}
-                    alt="Profile"
-                    className="profile-avatar"
-                  />
-                </button>
+            {/* Premium Balance Card */}
+            <div className="balance-card-premium">
+              <div className="balance-content">
+                <div className="balance-header">
+                  <div className="balance-info">
+                    <span className="balance-label">Available Balance</span>
+                    <div className="balance-amount">
+                      {formatCurrency(balance)}
+                    </div>
+                    <div className="balance-actions">
+                      <motion.button
+                        whileHover={{ scale: 1.05, y: -2 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="add-money-btn-professional"
+                        onClick={() => handleAddMoney(100)}
+                      >
+                        <div className="btn-icon-container">
+                          <svg viewBox="0 0 24 24" fill="currentColor" className="btn-icon-svg">
+                            <path d="M12 2v20M2 12h20" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                          </svg>
+                        </div>
+                        <span className="btn-text">Add Money</span>
+                      </motion.button>
+                    </div>
+                  </div>
+                  <button
+                    className="profile-btn-premium"
+                    onClick={() => setActiveView('profile')}
+                  >
+                    <div className="profile-avatar-premium">
+                      {user?.name?.charAt(0).toUpperCase()}
+                    </div>
+                  </button>
+                </div>
               </div>
-              <div className="balance-amount">
-                {formatCurrency(balance)}
-              </div>
-              <button
-                className="add-money-btn"
-                onClick={() => handleAddMoney(100)}
-              >
-                + Add Money
-              </button>
             </div>
 
-            {/* Action Buttons */}
-            <div className="action-buttons">
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="action-btn scan-btn"
-                onClick={() => setActiveView('scan')}
-              >
-                <div className="action-icon">⚡</div>
-                <span>Scan QR</span>
-              </motion.button>
+            {/* Premium Action Grid */}
+    <div className="action-grid-extension">
+      <motion.button
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
+        className="action-btn-extension scan-btn"
+        onClick={() => setActiveView('scan')}
+      >
+        <div className="btn-content">
+          <div className="icon-container">
+            <svg viewBox="0 0 24 24" fill="none" className="btn-icon">
+              <path 
+                d="M3 7V5a2 2 0 0 1 2-2h2M17 3h2a2 2 0 0 1 2 2v2M21 17v2a2 2 0 0 1-2 2h-2M7 21H5a2 2 0 0 1-2-2v-2" 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+              />
+              <rect x="7" y="7" width="10" height="10" rx="1" stroke="currentColor" strokeWidth="2"/>
+            </svg>
+          </div>
+          <span className="btn-text">Scan QR</span>
+        </div>
+      </motion.button>
 
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="action-btn send-btn"
-                onClick={() => setActiveView('receive')}
-              >
-                <div className="action-icon">↓</div>
-                <span>Receive</span>
-              </motion.button>
-            </div>
+      <motion.button
+        whileHover={{ scale: 1.02 }}
+        whileTap={{ scale: 0.98 }}
+        className="action-btn-extension receive-btn"
+        onClick={() => setActiveView('receive')}
+      >
+        <div className="btn-content">
+          <div className="icon-container">
+            <svg viewBox="0 0 24 24" fill="none" className="btn-icon">
+              <path 
+                d="M12 5v14M5 12l7 7 7-7" 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+              />
+              <path 
+                d="M3 17h18v3a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1v-3z" 
+                stroke="currentColor" 
+                strokeWidth="2"
+              />
+            </svg>
+          </div>
+          <span className="btn-text">Receive</span>
+        </div>
+      </motion.button>
+    </div>
 
-            {/* Recent Transactions */}
-            <div className="transactions-section">
-              <h3>Recent Transactions</h3>
+            {/* Premium Transactions Section */}
+            <div className="transactions-section-premium">
+              <div className="section-header">
+                <h3 className="section-title">Recent Activity</h3>
+                <button className="view-all-btn">View All</button>
+              </div>
+              
               {transactions.length === 0 ? (
-                <div className="no-transactions">
-                  <p>No transactions yet</p>
-                  <p className="empty-subtitle">Your payment history will appear here</p>
+                <div className="no-transactions-premium">
+                  <div className="empty-state">
+                    <div className="empty-icon">💳</div>
+                    <div className="empty-content">
+                      <h4>No transactions yet</h4>
+                      <p>Your payment history will appear here</p>
+                    </div>
+                  </div>
                 </div>
               ) : (
-                <div className="transactions-list">
-                  {transactions.slice(0, 5).map((transaction) => (
+                <div className="transactions-list-premium">
+                  {transactions.slice(0, 4).map((transaction, index) => (
                     <motion.div
                       key={transaction.id}
                       initial={{ opacity: 0, x: -20 }}
                       animate={{ opacity: 1, x: 0 }}
-                      className="transaction-item"
+                      transition={{ delay: index * 0.1 }}
+                      className="transaction-card-premium"
                     >
-                      <div className="transaction-icon">
-                        {transaction.type === 'credit' ? '⬇️' : '⬆️'}
-                      </div>
-                      <div className="transaction-details">
-                        <div className="transaction-description">
-                          {transaction.description}
+                      <div className="transaction-left">
+                        <div className={`transaction-icon-premium ${transaction.type}`}>
+                          <span className="transaction-symbol">
+                            {transaction.type === 'credit' ? '↓' : '↑'}
+                          </span>
                         </div>
-                        <div className="transaction-time">
-                          {new Date(transaction.timestamp).toLocaleDateString()}
+                        <div className="transaction-info">
+                          <div className="transaction-title">
+                            {transaction.description}
+                          </div>
+                          <div className="transaction-date">
+                            {new Date(transaction.timestamp).toLocaleDateString('en-US', {
+                              month: 'short',
+                              day: 'numeric',
+                              hour: '2-digit',
+                              minute: '2-digit'
+                            })}
+                          </div>
                         </div>
                       </div>
-                      <div className={`transaction-amount ${transaction.type}`}>
-                        {transaction.type === 'credit' ? '+' : '-'}
-                        {formatCurrency(transaction.amount)}
+                      <div className="transaction-right">
+                        <div className={`transaction-amount-premium ${transaction.type}`}>
+                          {transaction.type === 'credit' ? '+' : '-'}
+                          {formatCurrency(transaction.amount)}
+                        </div>
+                        <div className="transaction-status">
+                          <span className="status-dot completed"></span>
+                          <span className="status-text">Completed</span>
+                        </div>
                       </div>
                     </motion.div>
                   ))}
@@ -182,15 +248,18 @@ const Dashboard = ({ user, onLogout }) => {
 
   return (
     <div className="dashboard">
-      <div className="dashboard-header">
-        <div className="header-left">
-          <div className="app-logo">
-            <span className="logo-icon">■</span>
-            <span className="app-name">ExePay</span>
+      <div className="dashboard-header-premium">
+        <div className="header-content">
+          <div className="app-brand">
+            <div className="brand-icon">■</div>
+            <span className="brand-name">ExePay</span>
           </div>
-        </div>
-        <div className="header-right">
-          <span className="user-greeting">Hi, {user?.name?.split(' ')[0]}!</span>
+          <div className="header-user">
+            <span className="user-greeting">Hi, {user?.name?.split(' ')[0]}!</span>
+            <div className="notification-indicator">
+              <span className="notification-dot"></span>
+            </div>
+          </div>
         </div>
       </div>
 

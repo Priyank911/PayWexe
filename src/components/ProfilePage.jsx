@@ -44,177 +44,96 @@ const ProfilePage = ({ user, onBack, onLogout }) => {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.3 }}
-      className="profile-page"
+      className="profile-page-professional"
     >
-      <div className="profile-header">
-        <button className="back-btn" onClick={onBack}>
-          ← Back
+      {/* Professional Header */}
+      <div className="profile-header-professional">
+        <button className="back-btn-professional" onClick={onBack}>
+          <svg viewBox="0 0 24 24" fill="none" className="back-icon">
+            <path d="M19 12H5M12 19l-7-7 7-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
         </button>
-        <h2>Profile</h2>
-        <button className="logout-btn" onClick={handleLogout}>
-          Logout
+        <h2 className="profile-title">Account</h2>
+        <button className="logout-btn-professional" onClick={handleLogout}>
+          <svg viewBox="0 0 24 24" fill="none" className="logout-icon">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
         </button>
       </div>
 
-      <div className="profile-content">
-        {/* Profile Card */}
-        <div className="profile-card">
-          <div className="profile-avatar-section">
-            <div className="profile-avatar-large">
-              <img
-                src={`https://ui-avatars.com/api/?name=${user?.name}&background=667eea&color=fff&size=120`}
-                alt="Profile"
-                className="avatar-image"
-              />
-            </div>
-            <div className="profile-info">
-              <h3>{user?.name}</h3>
-              <p className="user-id">ID: {user?.userId}</p>
-            </div>
+      <div className="profile-content-professional">
+        {/* Professional Profile Section */}
+        <div className="profile-card-professional">
+          <div className="profile-avatar-professional">
+            <span className="avatar-letter">{user?.name?.charAt(0).toUpperCase()}</span>
+            <div className="avatar-glow"></div>
           </div>
-
-          <div className="profile-stats">
-            <div className="stat-item">
-              <div className="stat-value">{formatCurrency(user?.balance || 0)}</div>
-              <div className="stat-label">Current Balance</div>
-            </div>
-            <div className="stat-item">
-              <div className="stat-value">{user?.transactions?.length || 0}</div>
-              <div className="stat-label">Transactions</div>
-            </div>
-            <div className="stat-item">
-              <div className="stat-value">
-                {user?.createdAt ? new Date(user.createdAt).toLocaleDateString() : 'N/A'}
-              </div>
-              <div className="stat-label">Member Since</div>
+          <div className="profile-details">
+            <h3 className="profile-name">{user?.name}</h3>
+            <div className="profile-id-container">
+              <span className="id-label">ID:</span>
+              <span className="profile-id">{user?.userId}</span>
             </div>
           </div>
         </div>
 
-        {/* Contact Information */}
-        <div className="info-section">
-          <h4>Contact Information</h4>
-          <div className="info-item">
-            <div className="info-label">
-              <span className="info-icon">📧</span>
-              Email
-            </div>
-            <div className="info-value">
-              <span>{user?.email}</span>
-              <button
-                className={`copy-btn ${copying === 'email' ? 'copied' : ''}`}
-                onClick={() => copyToClipboard(user?.email, 'email')}
-              >
-                {copying === 'email' ? '✓' : '📋'}
-              </button>
-            </div>
+        {/* Professional Balance Display */}
+        <div className="balance-display-professional">
+          <div className="balance-icon-container">
+            <svg viewBox="0 0 24 24" fill="none" className="balance-icon">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
           </div>
-
-          <div className="info-item">
-            <div className="info-label">
-              <span className="info-icon">📱</span>
-              Mobile
-            </div>
-            <div className="info-value">
-              <span>+91 {user?.mobile}</span>
-              <button
-                className={`copy-btn ${copying === 'mobile' ? 'copied' : ''}`}
-                onClick={() => copyToClipboard(`+91${user?.mobile}`, 'mobile')}
-              >
-                {copying === 'mobile' ? '✓' : '📋'}
-              </button>
-            </div>
+          <div className="balance-amount-professional">
+            {formatCurrency(user?.balance || 0)}
           </div>
+          <div className="balance-label-professional">Available Balance</div>
         </div>
 
-        {/* Payment Information */}
-        <div className="info-section">
-          <h4>Payment Information</h4>
-          <div className="info-item">
-            <div className="info-label">
-              <span className="info-icon">🔗</span>
-              Payment Address
+        {/* Professional Action Buttons */}
+        <div className="profile-actions-professional">
+          <motion.button
+            whileHover={{ scale: 1.02, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+            className="action-btn-professional primary"
+            onClick={() => setShowQR(true)}
+          >
+            <div className="btn-icon-container">
+              <svg viewBox="0 0 24 24" fill="none" className="action-icon">
+                <rect x="3" y="3" width="8" height="8" rx="1" stroke="currentColor" strokeWidth="2" fill="currentColor" fillOpacity="0.1"/>
+                <rect x="13" y="3" width="8" height="8" rx="1" stroke="currentColor" strokeWidth="2" fill="currentColor" fillOpacity="0.1"/>
+                <rect x="3" y="13" width="8" height="8" rx="1" stroke="currentColor" strokeWidth="2" fill="currentColor" fillOpacity="0.1"/>
+                <rect x="13" y="16" width="2" height="2" fill="currentColor"/>
+                <rect x="16" y="13" width="2" height="2" fill="currentColor"/>
+                <rect x="19" y="16" width="2" height="2" fill="currentColor"/>
+                <rect x="16" y="19" width="2" height="2" fill="currentColor"/>
+                <path d="M13 21h2M19 13v2M21 19h-2" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+              </svg>
             </div>
-            <div className="info-value">
-              <span className="payment-address">{user?.qrAddress}</span>
-              <button
-                className={`copy-btn ${copying === 'address' ? 'copied' : ''}`}
-                onClick={() => copyToClipboard(user?.qrAddress, 'address')}
-              >
-                {copying === 'address' ? '✓' : '📋'}
-              </button>
+            <div className="btn-content">
+              <span className="btn-title">Receive Payment</span>
+              <span className="btn-subtitle">Show QR Code</span>
             </div>
-          </div>
+          </motion.button>
 
-          <div className="qr-section">
-            <button className="show-qr-btn" onClick={() => setShowQR(true)}>
-              <span className="qr-icon">📱</span>
-              Show My QR Code
-            </button>
-          </div>
-        </div>
-
-        {/* Account Settings */}
-        <div className="info-section">
-          <h4>Account Settings</h4>
-          <div className="settings-grid">
-            <button className="setting-btn">
-              <span className="setting-icon">🔐</span>
-              <span>Change Password</span>
-              <span className="arrow">→</span>
-            </button>
-            <button className="setting-btn">
-              <span className="setting-icon">🔔</span>
-              <span>Notifications</span>
-              <span className="arrow">→</span>
-            </button>
-            <button className="setting-btn">
-              <span className="setting-icon">🛡️</span>
-              <span>Security</span>
-              <span className="arrow">→</span>
-            </button>
-            <button className="setting-btn">
-              <span className="setting-icon">❓</span>
-              <span>Help & Support</span>
-              <span className="arrow">→</span>
-            </button>
-          </div>
-        </div>
-
-        {/* Recent Transactions */}
-        {user?.transactions && user.transactions.length > 0 && (
-          <div className="info-section">
-            <h4>Recent Transactions</h4>
-            <div className="recent-transactions">
-              {user.transactions.slice(0, 3).map((transaction) => (
-                <div key={transaction.id} className="transaction-item">
-                  <div className="transaction-icon">
-                    {transaction.type === 'credit' ? '⬇️' : '⬆️'}
-                  </div>
-                  <div className="transaction-details">
-                    <div className="transaction-description">
-                      {transaction.description}
-                    </div>
-                    <div className="transaction-time">
-                      {new Date(transaction.timestamp).toLocaleDateString()}
-                    </div>
-                  </div>
-                  <div className={`transaction-amount ${transaction.type}`}>
-                    {transaction.type === 'credit' ? '+' : '-'}
-                    {formatCurrency(transaction.amount)}
-                  </div>
-                </div>
-              ))}
+          <motion.button
+            whileHover={{ scale: 1.02, y: -2 }}
+            whileTap={{ scale: 0.98 }}
+            className="action-btn-professional secondary"
+            onClick={() => copyToClipboard(user?.email, 'email')}
+          >
+            <div className="btn-icon-container">
+              <svg viewBox="0 0 24 24" fill="none" className="action-icon">
+                <rect x="9" y="9" width="13" height="13" rx="2" stroke="currentColor" strokeWidth="2"/>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" stroke="currentColor" strokeWidth="2"/>
+                <path d="M12 12l3 3M15 12l-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+              </svg>
             </div>
-          </div>
-        )}
-
-        {/* Account Actions */}
-        <div className="account-actions">
-          <button className="danger-btn" onClick={handleLogout}>
-            <span className="danger-icon">🚪</span>
-            Logout from ExePay
-          </button>
+            <div className="btn-content">
+              <span className="btn-title">{copying === 'email' ? 'Copied!' : 'Copy Email'}</span>
+              <span className="btn-subtitle">{copying === 'email' ? 'Email copied to clipboard' : 'Copy to clipboard'}</span>
+            </div>
+          </motion.button>
         </div>
       </div>
     </motion.div>

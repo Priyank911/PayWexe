@@ -1,301 +1,940 @@
+/* Professional Black Theme Dashboard */
 .dashboard {
   min-height: 100vh;
-  background: #f8f9fa;
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
   display: flex;
   flex-direction: column;
   max-height: 600px;
   overflow-y: auto;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif;
 }
 
-.dashboard-header {
-  background: #ffffff;
-  padding: 12px 16px;
+/* Premium Header */
+.dashboard-header-premium {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+  border-bottom: 1px solid #333333;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.dashboard-header-premium::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #4f4f4f, transparent);
+}
+
+.header-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid #e5e7eb;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  flex-shrink: 0;
+  padding: 16px 20px;
+  position: relative;
+  z-index: 1;
 }
 
-.header-left {
+.app-brand {
   display: flex;
   align-items: center;
+  gap: 10px;
 }
 
-.app-logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.logo-icon {
-  font-size: 1.2rem;
-  color: #1f2937;
-}
-
-.app-name {
-  font-size: 1.2rem;
+.brand-icon {
+  font-size: 20px;
+  color: #ffffff;
   font-weight: 700;
-  color: #1f2937;
+}
+
+.brand-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.3px;
+}
+
+.header-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .user-greeting {
-  color: #1f2937;
+  color: #e5e5e5;
   font-weight: 500;
-  font-size: 0.9rem;
+  font-size: 14px;
 }
 
+.notification-indicator {
+  position: relative;
+  width: 8px;
+  height: 8px;
+}
+
+.notification-dot {
+  width: 8px;
+  height: 8px;
+  background: #10b981;
+  border-radius: 50%;
+  display: block;
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.2);
+  }
+}
+
+/* Content Area */
 .dashboard-content {
   flex: 1;
-  padding: 16px;
-  overflow-y: auto;
+  padding: 16px 20px;
+  background: linear-gradient(135deg, #0f0f0f 0%, #1a1a1a 100%);
 }
 
 .home-view {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   max-width: 400px;
   margin: 0 auto;
 }
 
-.balance-card {
-  background: #1f2937;
-  border-radius: 8px;
-  padding: 18px;
-  color: white;
-  margin-bottom: 18px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  border: 1px solid #374151;
+/* Ultra Clean No-Background Balance Design */
+.balance-card-premium {
+  background: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+.balance-content {
+  background: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
 }
 
 .balance-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 12px;
+  align-items: flex-start;
+  margin-bottom: 0;
+  background: none !important;
 }
 
-.balance-header h2 {
-  margin: 0;
-  font-size: 1rem;
+.balance-info {
+  flex: 1;
+  background: none !important;
+}
+
+.balance-label {
+  display: block;
+  font-size: 11px;
   font-weight: 500;
-  color: #d1d5db;
-}
-
-.profile-btn {
-  background: rgba(255, 255, 255, 0.1);
-  border: none;
-  border-radius: 50%;
-  padding: 6px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.profile-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.profile-avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
+  color: #9ca3af;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: 8px;
 }
 
 .balance-amount {
-  font-size: 2rem;
-  font-weight: 700;
+  font-size: 42px;
+  font-weight: 800;
+  color: #ffffff !important;
+  line-height: 0.9;
+  letter-spacing: -1.5px;
   margin-bottom: 16px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.balance-actions {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 0;
+  background: none !important;
+}
+
+/* Compact Professional Add Money Button */
+.add-money-btn-professional {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  border: none;
   color: #ffffff;
-}
-
-.add-money-btn {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: white;
   padding: 10px 16px;
-  border-radius: 6px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-size: 0.9rem;
-}
-
-.add-money-btn:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.action-buttons {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-bottom: 24px;
-}
-
-.action-btn {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 8px;
-  padding: 16px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  text-decoration: none;
-  color: inherit;
-}
-
-.action-btn:hover {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  border-color: #d1d5db;
-}
-
-.action-icon {
-  font-size: 1.6rem;
-  margin-bottom: 4px;
-  color: #374151;
-}
-
-.scan-btn .action-icon {
-  background: linear-gradient(135deg, #00ff88, #00cc6a);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.send-btn .action-icon {
-  background: linear-gradient(135deg, #ff6b6b, #ee5a24);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.action-btn span {
-  font-weight: 500;
-  color: #1f2937;
-  font-size: 0.9rem;
-}
-
-.transactions-section {
-  background: #ffffff;
-  border-radius: 8px;
-  padding: 16px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  border: 1px solid #e5e7eb;
-}
-
-.transactions-section h3 {
-  margin: 0 0 20px 0;
-  color: #1f2937;
-  font-size: 1.1rem;
-  font-weight: 600;
-}
-
-.no-transactions {
-  text-align: center;
-  padding: 40px 20px;
-  color: #6b7280;
-}
-
-.empty-subtitle {
-  font-size: 0.9rem;
-  color: #9ca3af;
-  margin-top: 5px;
-}
-
-.transactions-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.transaction-item {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  padding: 15px;
-  background: #f8f9fa;
   border-radius: 12px;
-  transition: all 0.3s ease;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.3);
+  position: relative;
+  overflow: hidden;
 }
 
-.transaction-item:hover {
-  background: #e9ecef;
-  transform: translateX(5px);
+.add-money-btn-professional::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.6s ease;
 }
 
-.transaction-icon {
-  font-size: 1.5rem;
-  width: 40px;
-  height: 40px;
+.add-money-btn-professional:hover::before {
+  left: 100%;
+}
+
+.add-money-btn-professional:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 10px 30px rgba(59, 130, 246, 0.4);
+}
+
+.btn-icon-container {
+  width: 16px;
+  height: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: white;
-  border-radius: 50%;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.transaction-details {
+.btn-icon-svg {
+  width: 12px;
+  height: 12px;
+  transition: transform 0.3s ease;
+}
+
+.add-money-btn-professional:hover .btn-icon-svg {
+  transform: rotate(90deg) scale(1.1);
+}
+
+.btn-text {
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* Compact Professional Profile Button */
+.profile-btn-premium {
+  background: rgba(26, 26, 26, 0.95);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(20px);
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-btn-premium::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  border-radius: 12px;
+}
+
+.profile-btn-premium:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.1);
+}
+
+.profile-btn-premium:hover::before {
+  opacity: 1;
+}
+
+.profile-avatar-premium {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #ffffff 0%, rgba(255, 255, 255, 0.9) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: #000000;
+  position: relative;
+  z-index: 1;
+  text-shadow: none;
+}
+
+/* Compact Professional Action Grid */
+.action-grid-premium {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.action-card-premium {
+  background: linear-gradient(135deg, #1a1a1a 0%, #262626 100%);
+  border: 1px solid #333333;
+  border-radius: 20px;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  min-height: 100px;
+  box-shadow: 
+    0 6px 25px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.action-card-premium::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.1) 0%, 
+    transparent 50%, 
+    rgba(255, 255, 255, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.action-card-premium:hover::after {
+  opacity: 1;
+}
+
+/* Dynamic Background Gradients */
+.action-card-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.scan-bg {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(37, 99, 235, 0.1) 100%);
+}
+
+.receive-bg {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(5, 150, 105, 0.1) 100%);
+}
+
+.action-card-premium:hover .action-card-bg {
+  opacity: 1;
+}
+
+/* Compact Card Content */
+.action-card-content {
+  position: relative;
+  z-index: 3;
+  padding: 18px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Compact Professional Icons */
+.action-icon-premium {
+  margin-bottom: 10px;
+}
+
+.professional-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(20px);
+}
+
+.scan-icon-pro {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: #ffffff;
+  box-shadow: 
+    0 8px 30px rgba(59, 130, 246, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.receive-icon-pro {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff;
+  box-shadow: 
+    0 8px 30px rgba(16, 185, 129, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.icon-svg {
+  width: 22px;
+  height: 22px;
+  position: relative;
+  z-index: 2;
+  transition: all 0.4s ease;
+}
+
+/* Advanced Professional Glow Effects */
+.professional-icon::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  opacity: 0;
+  transition: all 0.4s ease;
+  border-radius: 20px;
+}
+
+.scan-icon-pro::before {
+  background: radial-gradient(circle, rgba(59, 130, 246, 0.6) 0%, transparent 70%);
+}
+
+.receive-icon-pro::before {
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.6) 0%, transparent 70%);
+}
+
+.action-card-premium:hover .professional-icon::before {
+  opacity: 1;
+  animation: creative-glow 2.5s ease-in-out infinite;
+}
+
+@keyframes creative-glow {
+  0%, 100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.3) rotate(180deg);
+    opacity: 0.8;
+  }
+}
+
+.action-card-premium:hover .professional-icon {
+  transform: scale(1.08) rotate(2deg);
+}
+
+.action-card-premium:hover .icon-svg {
+  transform: scale(1.1);
+}
+
+/* Compact Text Styling */
+.action-text {
+  flex: 1;
+  margin-bottom: 6px;
+}
+
+.action-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+  margin-bottom: 4px;
+  display: block;
+  letter-spacing: -0.3px;
+}
+
+.action-subtitle {
+  font-size: 12px;
+  color: #9ca3af;
+  font-weight: 500;
+  line-height: 1.3;
+  letter-spacing: 0.2px;
+}
+
+/* Compact Arrow Animation */
+.action-arrow {
+  color: #6b7280;
+  font-size: 18px;
+  font-weight: 700;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  align-self: flex-end;
+  position: relative;
+}
+
+.action-arrow::after {
+  content: '→';
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: all 0.4s ease;
+}
+
+.action-card-premium:hover .action-arrow {
+  color: #ffffff;
+  transform: translateX(6px) scale(1.2);
+}
+
+.action-card-premium:hover .action-arrow::after {
+  opacity: 1;
+  transform: translateX(8px);
+}
+
+.action-card-premium:hover .professional-icon {
+  transform: scale(1.1) rotate(3deg);
+}
+
+.action-card-premium:hover .icon-svg {
+  transform: scale(1.15) rotate(-3deg);
+}
+
+/* Shine Effect */
+.card-shine {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transition: left 0.6s ease;
+}
+
+.action-card-premium:hover .card-shine {
+  left: 100%;
+}
+
+/* Ultimate Professional Hover Effects */
+.action-card-premium:hover {
+  border-color: #4a4a4a;
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.6),
+    0 12px 30px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transform: translateY(-8px) scale(1.03);
+}
+
+.scan-card:hover {
+  box-shadow: 
+    0 20px 60px rgba(59, 130, 246, 0.3),
+    0 12px 30px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.receive-card:hover {
+  box-shadow: 
+    0 20px 60px rgba(16, 185, 129, 0.3),
+    0 12px 30px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Premium Transactions Section */
+.transactions-section-premium {
+  background: linear-gradient(135deg, #1f1f1f 0%, #2a2a2a 100%);
+  border: 1px solid #333333;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px 16px;
+  border-bottom: 1px solid #333333;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+  margin: 0;
+}
+
+.view-all-btn {
+  background: none;
+  border: none;
+  color: #3b82f6;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+}
+
+.view-all-btn:hover {
+  background: rgba(59, 130, 246, 0.1);
+}
+
+/* Empty State */
+.no-transactions-premium {
+  padding: 40px 20px;
+}
+
+.empty-state {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.empty-icon {
+  font-size: 32px;
+  opacity: 0.6;
+}
+
+.empty-content h4 {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.empty-content p {
+  margin: 0;
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+/* Premium Transaction Cards */
+.transactions-list-premium {
+  padding: 0;
+}
+
+.transaction-card-premium {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #2a2a2a;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.transaction-card-premium:last-child {
+  border-bottom: none;
+}
+
+.transaction-card-premium:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.transaction-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   flex: 1;
 }
 
-.transaction-description {
+.transaction-icon-premium {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
   font-weight: 600;
-  color: #333;
-  margin-bottom: 4px;
+  flex-shrink: 0;
 }
 
-.transaction-time {
-  font-size: 0.8rem;
-  color: #666;
+.transaction-icon-premium.credit {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff;
 }
 
-.transaction-amount {
+.transaction-icon-premium.debit {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: #ffffff;
+}
+
+.transaction-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.transaction-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1.2;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.transaction-date {
+  font-size: 11px;
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+.transaction-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.transaction-amount-premium {
+  font-size: 14px;
   font-weight: 700;
-  font-size: 1.1rem;
+  line-height: 1.2;
 }
 
-.transaction-amount.credit {
-  color: #00cc6a;
+.transaction-amount-premium.credit {
+  color: #10b981;
 }
 
-.transaction-amount.debit {
-  color: #ee5a24;
+.transaction-amount-premium.debit {
+  color: #ef4444;
 }
 
-/* Responsive design */
-@media (max-width: 480px) {
-  .dashboard-content {
-    padding: 15px;
+.transaction-status {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.status-dot.completed {
+  background: #10b981;
+}
+
+.status-text {
+  font-size: 10px;
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+/* Perfect Compact Professional Action Buttons - Exact Reference Design */
+.action-grid-extension {
+  display: flex;
+  gap: 6px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.action-btn-extension {
+  flex: 1;
+  background: #000000;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 16px;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  height: 56px;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  outline: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+
+.action-btn-extension::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.08) 0%, 
+    rgba(255, 255, 255, 0.02) 50%,
+    transparent 100%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.action-btn-extension:hover::before {
+  opacity: 1;
+}
+
+.btn-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 100%;
+  padding: 0 16px;
+  position: relative;
+  z-index: 2;
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+}
+
+.btn-icon {
+  width: 20px;
+  height: 20px;
+  color: #ffffff;
+  transition: all 0.2s ease;
+}
+
+.btn-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1;
+  letter-spacing: -0.2px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+/* Specific button styling */
+.scan-btn {
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.receive-btn {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+/* Enhanced hover and active states */
+.action-btn-extension:hover {
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.action-btn-extension:hover .btn-icon {
+  transform: scale(1.05);
+  color: #ffffff;
+}
+
+.action-btn-extension:hover .btn-text {
+  color: #ffffff;
+}
+
+.action-btn-extension:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.action-btn-extension:focus {
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+}
+
+/* Extension-specific responsive design */
+@media (max-width: 400px) {
+  .action-grid-extension {
+    gap: 4px;
+    max-width: 320px;
   }
   
-  .balance-card {
-    padding: 20px;
+  .action-btn-extension {
+    height: 52px;
   }
   
-  .balance-amount {
-    font-size: 2rem;
+  .btn-content {
+    gap: 8px;
+    padding: 0 12px;
   }
   
-  .action-buttons {
-    gap: 12px;
+  .btn-text {
+    font-size: 13px;
   }
   
-  .action-btn {
-    padding: 16px;
+  .btn-icon {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 320px) {
+  .btn-content {
+    flex-direction: column;
+    gap: 4px;
   }
   
-  .action-icon {
-    font-size: 1.5rem;
+  .btn-text {
+    font-size: 11px;
+    font-weight: 500;
   }
   
-  .transactions-section {
-    padding: 15px;
+  .action-btn-extension {
+    height: 48px;
+  }
+}
+
+/* Dark theme optimization for extensions */
+@media (prefers-color-scheme: dark) {
+  .action-btn-extension {
+    background: #000000;
+    border-color: rgba(255, 255, 255, 0.25);
   }
   
-  .transaction-item {
-    padding: 12px;
+  .action-btn-extension:hover {
+    border-color: rgba(255, 255, 255, 0.4);
+  }
+}
+
+/* Performance optimizations for extensions */
+.action-btn-extension * {
+  pointer-events: none;
+}
+
+.action-btn-extension {
+  pointer-events: auto;
+  will-change: transform;
+}
+
+/* Accessibility improvements */
+.action-btn-extension:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .action-btn-extension,
+  .btn-icon,
+  .action-btn-extension::before {
+    transition: none;
   }
 }
